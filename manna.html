@@ -386,10 +386,15 @@
         footer .section {
             background: transparent;
             padding: 0;
+            color: white;
         }
 
         footer h2 {
-            color: white;
+            color: white !important;
+        }
+
+        footer h2::after {
+            background: rgba(255,255,255,0.3) !important;
         }
 
         footer .feature-card {
@@ -398,15 +403,23 @@
         }
 
         footer .feature-card h3 {
-            color: white;
+            color: white !important;
         }
 
         footer .feature-card li {
-            color: rgba(255,255,255,0.8);
+            color: rgba(255,255,255,0.8) !important;
         }
 
         footer .feature-card li::before {
-            color: #667eea;
+            color: #667eea !important;
+        }
+
+        footer .final-message {
+            color: white;
+        }
+
+        footer .final-message strong {
+            color: #a78bfa !important;
         }
 
         .final-message {
@@ -640,11 +653,11 @@
                 </div>
                 <div class="screenshot-card">
                     <img src="screenshot4.jpeg" alt="성도 관리 화면2">
-                    <h4>👥 부서별 관리</h4>
+                    <h4>👥 달란트 관리</h4>
                 </div>
                 <div class="screenshot-card">
                     <img src="screenshot5.jpeg" alt="출석 확인 화면">
-                    <h4>✅ 출석 확인</h4>
+                    <h4>✅ 부서 소식 및 출석 확인</h4>
                 </div>
                 <div class="screenshot-card">
                     <img src="screenshot6.jpeg" alt="모바일 초청장">
@@ -656,7 +669,7 @@
                 </div>
                 <div class="screenshot-card">
                     <img src="screenshot8.jpeg" alt="헌금 분석 통계2">
-                    <h4>📈 월별 헌금 현황</h4>
+                    <h4>📈 부서별 헌금 현황</h4>
                 </div>
                 <div class="screenshot-card">
                     <img src="screenshot9.jpeg" alt="헌금 종류별 통계">
