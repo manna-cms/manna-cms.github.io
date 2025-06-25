@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>교회 스마트 관리 앱 - 만나</title>
+    <title>만나 - 교회 스마트 관리 앱</title>
     <style>
         * {
             margin: 0;
@@ -12,29 +12,26 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Malgun Gothic', sans-serif;
             line-height: 1.6;
-            color: #333;
+            color: #1a1a1a;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
+            overflow-x: hidden;
         }
 
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
+            max-width: 100%;
+            margin: 0;
+            padding: 0;
         }
 
-        .text-container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
+        /* 히어로 섹션 */
         .hero {
             text-align: center;
-            padding: 80px 0 60px;
+            padding: 60px 20px 40px;
             color: white;
             position: relative;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             overflow: hidden;
         }
 
@@ -45,9 +42,9 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: radial-gradient(circle at 30% 40%, rgba(255,255,255,0.1) 0%, transparent 50%),
-                        radial-gradient(circle at 70% 80%, rgba(255,255,255,0.08) 0%, transparent 50%);
-            pointer-events: none;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(255,255,255,0.08) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(255,255,255,0.06) 0%, transparent 40%);
         }
 
         .hero-content {
@@ -55,47 +52,79 @@
             z-index: 2;
         }
 
-        .hero h1 {
-            font-size: 4rem;
+        .app-title-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.12);
+            backdrop-filter: blur(20px);
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255,255,255,0.15);
+            animation: float 3s ease-in-out infinite alternate;
+        }
+
+        .problem-highlight {
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(15px);
+            padding: 25px 20px;
+            border-radius: 20px;
+            margin: 20px 0;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .problem-highlight p {
+            font-size: 1rem;
             margin-bottom: 15px;
-            font-weight: 700;
-            background: linear-gradient(135deg, #ffffff 0%, #e8f4fd 50%, #ffffff 100%);
+            opacity: 0.95;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            text-align: left;
+        }
+
+        .problem-highlight p:last-child {
+            margin-bottom: 0;
+        }
+
+        .problem-highlight span {
+            margin-right: 12px;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffffff 0%, #e8f4fd 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            text-shadow: 0 4px 8px rgba(0,0,0,0.3);
-            letter-spacing: -2px;
-            animation: titleFloat 3s ease-in-out infinite alternate;
+            letter-spacing: -1px;
+            animation: titleFloat 4s ease-in-out infinite alternate;
         }
 
         .hero .subtitle {
-            font-size: 1.8rem;
-            margin-bottom: 10px;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
             font-weight: 300;
-            opacity: 0.95;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            opacity: 0.9;
         }
 
         .hero .description {
-            font-size: 1.2rem;
-            margin-bottom: 40px;
+            font-size: 1rem;
+            margin-bottom: 30px;
             opacity: 0.85;
-            max-width: 600px;
+            line-height: 1.6;
+            max-width: 90%;
             margin-left: auto;
             margin-right: auto;
-            line-height: 1.5;
         }
 
-        .app-title-badge {
-            display: inline-block;
-            background: rgba(255,255,255,0.15);
-            backdrop-filter: blur(10px);
-            padding: 8px 20px;
-            border-radius: 25px;
-            font-size: 0.9rem;
-            margin-bottom: 20px;
-            border: 1px solid rgba(255,255,255,0.2);
-            animation: badgeGlow 2s ease-in-out infinite alternate;
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            100% { transform: translateY(-3px); }
         }
 
         @keyframes titleFloat {
@@ -103,72 +132,92 @@
             100% { transform: translateY(-5px); }
         }
 
-        @keyframes badgeGlow {
-            0% { box-shadow: 0 0 20px rgba(255,255,255,0.2); }
-            100% { box-shadow: 0 0 30px rgba(255,255,255,0.4); }
+        /* 섹션 스타일 */
+        .section {
+            background: #ffffff;
+            margin: 0;
+            padding: 50px 20px;
+            position: relative;
         }
 
-        .section {
-            background: rgba(255, 255, 255, 0.95);
-            margin: 30px 0;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
-            backdrop-filter: blur(10px);
+        .section:nth-child(even) {
+            background: #f8fafc;
         }
 
         .section h2 {
-            color: #5a67d8;
-            font-size: 2.2rem;
+            color: #2d3748;
+            font-size: 1.8rem;
             margin-bottom: 30px;
             text-align: center;
+            font-weight: 700;
             position: relative;
+            padding-bottom: 15px;
         }
 
         .section h2::after {
             content: '';
             position: absolute;
-            bottom: -10px;
+            bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(45deg, #5a67d8, #9f7aea);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
             border-radius: 2px;
         }
 
+        /* 카드 그리드 */
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin-top: 30px;
         }
 
         .feature-card {
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: #ffffff;
+            padding: 25px 20px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border: 1px solid rgba(0,0,0,0.04);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
         .feature-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
         }
 
         .feature-card h3 {
             color: #2d3748;
-            font-size: 1.4rem;
-            margin-bottom: 20px;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            font-weight: 600;
             display: flex;
             align-items: center;
         }
 
         .feature-card h3::before {
-            content: '📱';
             margin-right: 10px;
-            font-size: 1.5rem;
+            font-size: 1.3rem;
         }
 
         .feature-card ul {
@@ -179,96 +228,104 @@
             padding: 8px 0;
             padding-left: 20px;
             position: relative;
+            font-size: 0.9rem;
+            color: #4a5568;
+            line-height: 1.5;
         }
 
         .feature-card li::before {
-            content: '✓';
+            content: '•';
             position: absolute;
             left: 0;
-            color: #48bb78;
+            color: #667eea;
             font-weight: bold;
+            font-size: 1.2rem;
         }
 
+        /* 스크린샷 섹션 */
         .screenshots {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
         }
 
         .screenshot-card {
             background: white;
-            border-radius: 20px;
+            border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 6px 25px rgba(0,0,0,0.1);
             transition: transform 0.3s ease;
         }
 
         .screenshot-card:hover {
-            transform: scale(1.05);
+            transform: translateY(-5px);
         }
 
         .screenshot-card img {
             width: 100%;
-            height: 500px;
+            height: 400px;
             object-fit: cover;
-            border-radius: 15px;
-            margin: 10px;
-            width: calc(100% - 20px);
-            height: 480px;
         }
 
         .screenshot-card h4 {
             padding: 20px;
             text-align: center;
             color: #2d3748;
-            font-size: 1.2rem;
+            font-size: 1rem;
+            font-weight: 600;
             background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
         }
 
+        /* 권한 관리 섹션 */
         .permissions {
-            background: linear-gradient(135deg, #fef5e7 0%, #fed7aa 100%);
-            border-left: 5px solid #f6ad55;
+            background: linear-gradient(135deg, #fff7ed 0%, #fed7aa 100%);
         }
 
-        .permissions h3 {
+        .permissions h2 {
             color: #c05621;
-            margin-bottom: 20px;
         }
 
         .permission-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 20px;
-            max-width: 600px;
-            margin: 0 auto;
+            grid-template-columns: 1fr;
+            gap: 15px;
         }
 
         .permission-item {
-            background: rgba(255,255,255,0.7);
+            background: rgba(255,255,255,0.8);
             padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+            border-left: 4px solid #f6ad55;
         }
 
         .permission-item h4 {
             color: #c05621;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
+            font-size: 1rem;
+            font-weight: 600;
         }
 
+        .permission-item p {
+            color: #7c2d12;
+            font-size: 0.9rem;
+        }
+
+        /* 다운로드 섹션 */
         .download-section {
             text-align: center;
-            padding: 60px 0;
+            padding: 60px 20px;
             background: linear-gradient(135deg, #48bb78 0%, #38a169 100%);
             color: white;
-            border-radius: 20px;
-            margin-top: 40px;
+            margin: 0;
         }
 
         .download-section h2 {
-            font-size: 2.5rem;
+            font-size: 2rem;
             margin-bottom: 20px;
             color: white;
+            font-weight: 700;
         }
 
         .download-section h2::after {
@@ -276,86 +333,155 @@
         }
 
         .download-section p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
+            font-size: 1rem;
+            margin-bottom: 15px;
             opacity: 0.9;
+            line-height: 1.6;
         }
 
         .download-buttons {
             display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
+            flex-direction: column;
+            gap: 15px;
             margin-top: 30px;
+            align-items: center;
         }
 
         .download-btn {
             display: inline-flex;
             align-items: center;
-            padding: 15px 30px;
+            justify-content: center;
+            padding: 16px 32px;
             background: rgba(255,255,255,0.15);
             color: white;
             text-decoration: none;
             border-radius: 50px;
-            font-size: 1.1rem;
-            font-weight: bold;
+            font-size: 1rem;
+            font-weight: 600;
             transition: all 0.3s ease;
             border: 2px solid rgba(255,255,255,0.3);
             backdrop-filter: blur(10px);
+            width: 100%;
+            max-width: 280px;
         }
 
         .download-btn:hover {
             background: rgba(255,255,255,0.25);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-        }
-
-        .download-btn.coming-soon {
-            opacity: 0.6;
-            cursor: not-allowed;
-        }
-
-        .download-btn.coming-soon:hover {
-            transform: none;
-            background: rgba(255,255,255,0.15);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
         }
 
         .download-btn::before {
-            font-size: 1.5rem;
-            margin-right: 10px;
+            font-size: 1.2rem;
+            margin-right: 8px;
         }
 
-        @media (max-width: 768px) {
+        /* 푸터 */
+        footer {
+            background: #2d3748;
+            color: white;
+            padding: 50px 20px;
+        }
+
+        footer .section {
+            background: transparent;
+            padding: 0;
+        }
+
+        footer h2 {
+            color: white;
+        }
+
+        footer .feature-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        footer .feature-card h3 {
+            color: white;
+        }
+
+        footer .feature-card li {
+            color: rgba(255,255,255,0.8);
+        }
+
+        footer .feature-card li::before {
+            color: #667eea;
+        }
+
+        .final-message {
+            text-align: center;
+            margin-top: 40px;
+            padding: 30px 20px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .final-message strong {
+            font-size: 1.1rem;
+            color: #667eea;
+        }
+
+        /* 반응형 디자인 */
+        @media (min-width: 768px) {
+            .hero {
+                padding: 80px 40px 60px;
+            }
+            
             .hero h1 {
-                font-size: 2.8rem;
+                font-size: 4rem;
             }
             
             .hero .subtitle {
-                font-size: 1.4rem;
+                font-size: 1.6rem;
             }
 
             .hero .description {
-                font-size: 1rem;
+                font-size: 1.1rem;
+                max-width: 700px;
             }
             
             .section {
-                padding: 20px;
+                padding: 60px 40px;
+            }
+            
+            .section h2 {
+                font-size: 2.2rem;
             }
             
             .features-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .download-buttons {
-                flex-direction: column;
-                align-items: center;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 25px;
             }
 
             .permission-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
+            .download-buttons {
+                flex-direction: row;
+                justify-content: center;
+            }
+
+            .download-btn {
+                width: auto;
             }
         }
 
+        @media (min-width: 1024px) {
+            .container {
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+
+            .features-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+        }
+
+        /* 애니메이션 */
         .fade-in {
             opacity: 0;
             transform: translateY(30px);
@@ -366,6 +492,55 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* 로딩 애니메이션 */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: #fff;
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* 접근성 개선 */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* 다크모드 지원 */
+        @media (prefers-color-scheme: dark) {
+            .section {
+                background: #1a202c;
+                color: #e2e8f0;
+            }
+
+            .section:nth-child(even) {
+                background: #2d3748;
+            }
+
+            .feature-card {
+                background: #2d3748;
+                border: 1px solid rgba(255,255,255,0.1);
+            }
+
+            .feature-card h3 {
+                color: #e2e8f0;
+            }
+
+            .feature-card li {
+                color: #cbd5e0;
+            }
+        }
     </style>
 </head>
 <body>
@@ -373,10 +548,10 @@
         <header class="hero">
             <div class="hero-content">
                 <div class="app-title-badge">⛪ 교회 스마트 관리 앱</div>
-                <div class="problem-highlight" style="background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 25px; border-radius: 20px; margin: 20px auto; max-width: 650px; border: 1px solid rgba(255,255,255,0.2);">
-                    <p style="font-size: 1.2rem; margin-bottom: 18px; opacity: 0.95; display: flex; align-items: center; justify-content: center;"><span style="margin-right: 12px;">📝</span> 복잡한 엑셀 관리에 지치셨나요?</p>
-                    <p style="font-size: 1.2rem; margin-bottom: 18px; opacity: 0.95; display: flex; align-items: center; justify-content: center;"><span style="margin-right: 12px;">📊</span> 출석부터 헌금까지 따로따로 관리하느라 번거로우신가요?</p>
-                    <p style="font-size: 1.2rem; margin-bottom: 0; opacity: 0.95; display: flex; align-items: center; justify-content: center;"><span style="margin-right: 12px;">🤝</span> 성도들과의 소통이 어려우신가요?</p>
+                <div class="problem-highlight">
+                    <p><span>📝</span> 복잡한 엑셀 관리에 지치셨나요?</p>
+                    <p><span>📊</span> 출석부터 헌금까지 따로따로 관리하느라 번거로우신가요?</p>
+                    <p><span>🤝</span> 성도들과의 소통이 어려우신가요?</p>
                 </div>
                 <h1>만나</h1>
                 <p class="subtitle">교회 스마트 관리 앱</p>
@@ -385,200 +560,190 @@
         </header>
 
         <section class="section fade-in">
-            <div class="text-container">
-                <h2>🎯 교직자 전용 기능</h2>
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <h3>📱 출석 및 통계 관리</h3>
-                        <ul>
-                            <li>실시간 출석 체크: 간편한 터치로 빠른 출석 등록</li>
-                            <li>연도별 출석 현황: 개인별, 부서별 출석 패턴 분석</li>
-                            <li>자동 출결 보고서: 다양한 템플릿으로 보고서 자동 생성</li>
-                            <li>성장률 분석: 주간/월간/연간 교회 성장 트렌드 확인</li>
-                        </ul>
-                    </div>
-                    <div class="feature-card">
-                        <h3>💰 헌금 관리 시스템</h3>
-                        <ul>
-                            <li>헌금 등록: 십일조, 감사헌금, 특별헌금 등 유형별 등록</li>
-                            <li>헌금 통계: 월별/연도별 헌금 현황 및 추이 분석</li>
-                            <li>재정 보고서: 자동화된 헌금 보고서 생성</li>
-                            <li>익명 헌금 처리: 개인정보 보호를 위한 시스템</li>
-                        </ul>
-                    </div>
-                    <div class="feature-card">
-                        <h3>👥 성도 관리</h3>
-                        <ul>
-                            <li>부서별 관리: 유아부부터 장년부까지 맞춤 운영</li>
-                            <li>새신자 등록: 새가족 정보부터 정착 과정까지</li>
-                            <li>심방 관리: 심방 일정 계획 및 방문 기록 보관</li>
-                            <li>성도 프로필: 개인별 상세 정보 및 기록 관리</li>
-                        </ul>
-                    </div>
-                    <div class="feature-card">
-                        <h3>📸 미디어 관리</h3>
-                        <ul>
-                            <li>활동 사진/영상: 부서별 활동 기록 체계적 관리</li>
-                            <li>유튜브 연동: 교회 채널 영상을 앱에서 시청</li>
-                            <li>모바일 초대장: 전도용 교회 초대장 제작</li>
-                            <li>디지털 주보: 편리한 주보 배포</li>
-                        </ul>
-                    </div>
+            <h2>🎯 교직자 전용 기능</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>📱 출석 및 통계 관리</h3>
+                    <ul>
+                        <li>실시간 출석 체크: 간편한 터치로 빠른 출석 등록</li>
+                        <li>연도별 출석 현황: 개인별, 부서별 출석 패턴 분석</li>
+                        <li>자동 출결 보고서: 다양한 템플릿으로 보고서 자동 생성</li>
+                        <li>성장률 분석: 주간/월간/연간 교회 성장 트렌드 확인</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <h3>💰 헌금 관리 시스템</h3>
+                    <ul>
+                        <li>헌금 등록: 십일조, 감사헌금, 특별헌금 등 유형별 등록</li>
+                        <li>헌금 통계: 월별/연도별 헌금 현황 및 추이 분석</li>
+                        <li>재정 보고서: 자동화된 헌금 보고서 생성</li>
+                        <li>익명 헌금 처리: 개인정보 보호를 위한 시스템</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <h3>👥 성도 관리</h3>
+                    <ul>
+                        <li>부서별 관리: 유아부부터 장년부까지 맞춤 운영</li>
+                        <li>새신자 등록: 새가족 정보부터 정착 과정까지</li>
+                        <li>심방 관리: 심방 일정 계획 및 방문 기록 보관</li>
+                        <li>성도 프로필: 개인별 상세 정보 및 기록 관리</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <h3>📸 미디어 관리</h3>
+                    <ul>
+                        <li>활동 사진/영상: 부서별 활동 기록 체계적 관리</li>
+                        <li>유튜브 연동: 교회 채널 영상을 앱에서 시청</li>
+                        <li>모바일 초대장: 전도용 교회 초대장 제작</li>
+                        <li>디지털 주보: 편리한 주보 배포</li>
+                    </ul>
                 </div>
             </div>
         </section>
 
         <section class="section permissions fade-in">
-            <div class="text-container">
-                <h2>🔐 권한 관리 시스템</h2>
-                <div class="permission-grid">
-                    <div class="permission-item">
-                        <h4>👑 최고 관리자</h4>
-                        <p>담임목사, 부목사 - 모든 기능 접근 가능</p>
-                    </div>
-                    <div class="permission-item">
-                        <h4>👥 부서 관리자</h4>
-                        <p>각 부서 교역자, 부장 - 담당 부서 관련 기능</p>
-                    </div>
-                    <div class="permission-item">
-                        <h4>💰 재정 관리자</h4>
-                        <p>헌금 관리 및 재정 관련 기능 전용 접근</p>
-                    </div>
-                    <div class="permission-item">
-                        <h4>🙏 일반 성도</h4>
-                        <p>개인 신앙생활 및 교회 참여 기능 이용</p>
-                    </div>
+            <h2>🔐 권한 관리 시스템</h2>
+            <div class="permission-grid">
+                <div class="permission-item">
+                    <h4>👑 최고 관리자</h4>
+                    <p>담임목사, 부목사 - 모든 기능 접근 가능</p>
+                </div>
+                <div class="permission-item">
+                    <h4>👥 부서 관리자</h4>
+                    <p>각 부서 교역자, 부장 - 담당 부서 관련 기능</p>
+                </div>
+                <div class="permission-item">
+                    <h4>💰 재정 관리자</h4>
+                    <p>헌금 관리 및 재정 관련 기능 전용 접근</p>
+                </div>
+                <div class="permission-item">
+                    <h4>🙏 일반 성도</h4>
+                    <p>개인 신앙생활 및 교회 참여 기능 이용</p>
                 </div>
             </div>
         </section>
 
         <section class="section fade-in">
-            <div class="text-container">
-                <h2>📱 주요 기능 스크린샷</h2>
-                <div class="screenshots">
-                    <div class="screenshot-card">
-                        <img src="screenshot1.jpeg" alt="헌금 관리 화면">
-                        <h4>💰 헌금 관리</h4>
-                    </div>
-                    <div class="screenshot-card">
-                        <img src="screenshot2.jpeg" alt="출석 관리 화면">
-                        <h4>📊 출석 관리</h4>
-                    </div>
-                    <div class="screenshot-card">
-                        <img src="screenshot3.jpeg" alt="성도 관리 화면1">
-                        <h4>👥 성도 관리</h4>
-                    </div>
-                    <div class="screenshot-card">
-                        <img src="screenshot4.jpeg" alt="성도 관리 화면2">
-                        <h4>👥 부서별 관리</h4>
-                    </div>
-                    <div class="screenshot-card">
-                        <img src="screenshot5.jpeg" alt="출석 확인 화면">
-                        <h4>✅ 출석 확인</h4>
-                    </div>
-                    <div class="screenshot-card">
-                        <img src="screenshot6.jpeg" alt="모바일 초청장">
-                        <h4>💌 모바일 초청장</h4>
-                    </div>
-                    <div class="screenshot-card">
-                        <img src="screenshot7.jpeg" alt="헌금 분석 통계1">
-                        <h4>📊 헌금 통계 분석</h4>
-                    </div>
-                    <div class="screenshot-card">
-                        <img src="screenshot8.jpeg" alt="헌금 분석 통계2">
-                        <h4>📈 월별 헌금 현황</h4>
-                    </div>
-                    <div class="screenshot-card">
-                        <img src="screenshot9.jpeg" alt="헌금 종류별 통계">
-                        <h4>📈 헌금 종류별 분석</h4>
-                    </div>
-                    <div class="screenshot-card">
-                        <img src="screenshot10.jpeg" alt="새신자 목록">
-                        <h4>👥 새신자 관리</h4>
-                    </div>
-                    <div class="screenshot-card">
-                        <img src="screenshot11.jpeg" alt="교회 전체 통계1">
-                        <h4>📊 교회 현황 분석</h4>
-                    </div>
-                    <div class="screenshot-card">
-                        <img src="screenshot12.jpeg" alt="교회 전체 통계2">
-                        <h4>📊 교회 성장 통계</h4>
-                    </div>
+            <h2>📱 주요 기능 스크린샷</h2>
+            <div class="screenshots">
+                <div class="screenshot-card">
+                    <img src="screenshot1.jpeg" alt="헌금 관리 화면">
+                    <h4>💰 헌금 관리</h4>
+                </div>
+                <div class="screenshot-card">
+                    <img src="screenshot2.jpeg" alt="출석 관리 화면">
+                    <h4>📊 출석 관리</h4>
+                </div>
+                <div class="screenshot-card">
+                    <img src="screenshot3.jpeg" alt="성도 관리 화면1">
+                    <h4>👥 성도 관리</h4>
+                </div>
+                <div class="screenshot-card">
+                    <img src="screenshot4.jpeg" alt="성도 관리 화면2">
+                    <h4>👥 부서별 관리</h4>
+                </div>
+                <div class="screenshot-card">
+                    <img src="screenshot5.jpeg" alt="출석 확인 화면">
+                    <h4>✅ 출석 확인</h4>
+                </div>
+                <div class="screenshot-card">
+                    <img src="screenshot6.jpeg" alt="모바일 초청장">
+                    <h4>💌 모바일 초청장</h4>
+                </div>
+                <div class="screenshot-card">
+                    <img src="screenshot7.jpeg" alt="헌금 분석 통계1">
+                    <h4>📊 헌금 통계 분석</h4>
+                </div>
+                <div class="screenshot-card">
+                    <img src="screenshot8.jpeg" alt="헌금 분석 통계2">
+                    <h4>📈 월별 헌금 현황</h4>
+                </div>
+                <div class="screenshot-card">
+                    <img src="screenshot9.jpeg" alt="헌금 종류별 통계">
+                    <h4>📈 헌금 종류별 분석</h4>
+                </div>
+                <div class="screenshot-card">
+                    <img src="screenshot10.jpeg" alt="새신자 목록">
+                    <h4>👥 새신자 관리</h4>
+                </div>
+                <div class="screenshot-card">
+                    <img src="screenshot11.jpeg" alt="교회 전체 통계1">
+                    <h4>📊 교회 현황 분석</h4>
+                </div>
+                <div class="screenshot-card">
+                    <img src="screenshot12.jpeg" alt="교회 전체 통계2">
+                    <h4>📊 교회 성장 통계</h4>
                 </div>
             </div>
         </section>
 
         <section class="section fade-in">
-            <div class="text-container">
-                <h2>🙏 성도 이용 기능</h2>
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <h3>📖 개인 신앙생활</h3>
-                        <ul>
-                            <li>말씀 묵상: 일일 말씀과 개인 묵상 기록</li>
-                            <li>설교노트: 주일 설교 은혜와 깨달음 기록</li>
-                            <li>개인 기도 요청: 개인의 기도 제목 등록 및 관리</li>
-                            <li>개인 헌금 내역: 본인의 헌금 기록 확인 및 관리</li>
-                        </ul>
-                    </div>
-                    <div class="feature-card">
-                        <h3>🎉 교회 생활 참여</h3>
-                        <ul>
-                            <li>실시간 소식: 교회 공지사항과 중요한 알림 확인</li>
-                            <li>행사 참여: 교회에서 열리는 다양한 행사 참여</li>
-                            <li>모바일 주보: 언제 어디서나 주보 내용 확인</li>
-                            <li>교회 영상 시청: 유튜브 연동으로 설교 영상 시청</li>
-                        </ul>
-                    </div>
-                    <div class="feature-card">
-                        <h3>💭 소통 및 참여</h3>
-                        <ul>
-                            <li>심방 요청: 필요시 목회자에게 심방 요청</li>
-                            <li>중보기도 요청: 공동체와 기도 제목 나눔</li>
-                            <li>교회 개선 제안: 교회 발전을 위한 의견 제시</li>
-                            <li>가족 연동: 가족 구성원의 교회 활동 통합 관리</li>
-                        </ul>
-                    </div>
+            <h2>🙏 성도 이용 기능</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>📖 개인 신앙생활</h3>
+                    <ul>
+                        <li>말씀 묵상: 일일 말씀과 개인 묵상 기록</li>
+                        <li>설교노트: 주일 설교 은혜와 깨달음 기록</li>
+                        <li>개인 기도 요청: 개인의 기도 제목 등록 및 관리</li>
+                        <li>개인 헌금 내역: 본인의 헌금 기록 확인 및 관리</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <h3>🎉 교회 생활 참여</h3>
+                    <ul>
+                        <li>실시간 소식: 교회 공지사항과 중요한 알림 확인</li>
+                        <li>행사 참여: 교회에서 열리는 다양한 행사 참여</li>
+                        <li>모바일 주보: 언제 어디서나 주보 내용 확인</li>
+                        <li>교회 영상 시청: 유튜브 연동으로 설교 영상 시청</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <h3>💭 소통 및 참여</h3>
+                    <ul>
+                        <li>심방 요청: 필요시 목회자에게 심방 요청</li>
+                        <li>중보기도 요청: 공동체와 기도 제목 나눔</li>
+                        <li>교회 개선 제안: 교회 발전을 위한 의견 제시</li>
+                        <li>가족 연동: 가족 구성원의 교회 활동 통합 관리</li>
+                    </ul>
                 </div>
             </div>
         </section>
 
         <section class="section fade-in">
-            <div class="text-container">
-                <h2>✨ 주요 특징</h2>
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <h3>🎯 역할별 최적화</h3>
-                        <ul>
-                            <li>교직자와 성도 각각의 필요에 맞는 차별화된 기능</li>
-                            <li>최적의 사용자 경험 제공</li>
-                            <li>직관적인 인터페이스 설계</li>
-                        </ul>
-                    </div>
-                    <div class="feature-card">
-                        <h3>📊 데이터 기반 운영</h3>
-                        <ul>
-                            <li>체계적인 통계와 분석 제공</li>
-                            <li>교회의 성장과 발전 방향 파악</li>
-                            <li>실시간 데이터 동기화</li>
-                        </ul>
-                    </div>
-                    <div class="feature-card">
-                        <h3>🔒 안전한 정보 보호</h3>
-                        <ul>
-                            <li>철저한 권한 관리 시스템</li>
-                            <li>개인정보와 교회 데이터 보호</li>
-                            <li>특히 헌금 정보 안전 관리</li>
-                        </ul>
-                    </div>
-                    <div class="feature-card">
-                        <h3>💎 투명한 재정 관리</h3>
-                        <ul>
-                            <li>헌금 관리 기능으로 투명성 증대</li>
-                            <li>성도들의 신뢰 증진</li>
-                            <li>자동화된 보고서 시스템</li>
-                        </ul>
-                    </div>
+            <h2>✨ 주요 특징</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>🎯 역할별 최적화</h3>
+                    <ul>
+                        <li>교직자와 성도 각각의 필요에 맞는 차별화된 기능</li>
+                        <li>최적의 사용자 경험 제공</li>
+                        <li>직관적인 인터페이스 설계</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <h3>📊 데이터 기반 운영</h3>
+                    <ul>
+                        <li>체계적인 통계와 분석 제공</li>
+                        <li>교회의 성장과 발전 방향 파악</li>
+                        <li>실시간 데이터 동기화</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <h3>🔒 안전한 정보 보호</h3>
+                    <ul>
+                        <li>철저한 권한 관리 시스템</li>
+                        <li>개인정보와 교회 데이터 보호</li>
+                        <li>특히 헌금 정보 안전 관리</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <h3>💎 투명한 재정 관리</h3>
+                    <ul>
+                        <li>헌금 관리 기능으로 투명성 증대</li>
+                        <li>성도들의 신뢰 증진</li>
+                        <li>자동화된 보고서 시스템</li>
+                    </ul>
                 </div>
             </div>
         </section>
@@ -594,33 +759,31 @@
         </section>
 
         <section class="section fade-in">
-            <div class="text-container">
-                <h2>🏆 이런 분들께 추천합니다</h2>
-                <div class="features-grid">
-                    <div class="feature-card">
-                        <h3>✅ 교직자분들</h3>
-                        <ul>
-                            <li>체계적인 교회 관리를 원하는 목회자</li>
-                            <li>성도들과의 소통을 강화하고 싶은 교역자</li>
-                            <li>데이터 기반으로 교회를 운영하고 싶은 분들</li>
-                            <li>투명하고 체계적인 재정 관리를 원하는 분들</li>
-                        </ul>
-                    </div>
-                    <div class="feature-card">
-                        <h3>✅ 성도분들</h3>
-                        <ul>
-                            <li>교회 소식을 빠르게 확인하고 싶은 분들</li>
-                            <li>체계적인 신앙생활을 원하는 분들</li>
-                            <li>교회 공동체와 더 깊이 소통하고 싶은 분들</li>
-                            <li>개인 헌금 내역을 체계적으로 관리하고 싶은 분들</li>
-                        </ul>
-                    </div>
+            <h2>🏆 이런 분들께 추천합니다</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>✅ 교직자분들</h3>
+                    <ul>
+                        <li>체계적인 교회 관리를 원하는 목회자</li>
+                        <li>성도들과의 소통을 강화하고 싶은 교역자</li>
+                        <li>데이터 기반으로 교회를 운영하고 싶은 분들</li>
+                        <li>투명하고 체계적인 재정 관리를 원하는 분들</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <h3>✅ 성도분들</h3>
+                    <ul>
+                        <li>교회 소식을 빠르게 확인하고 싶은 분들</li>
+                        <li>체계적인 신앙생활을 원하는 분들</li>
+                        <li>교회 공동체와 더 깊이 소통하고 싶은 분들</li>
+                        <li>개인 헌금 내역을 체계적으로 관리하고 싶은 분들</li>
+                    </ul>
                 </div>
             </div>
         </section>
 
-        <footer class="section fade-in">
-            <div class="text-container">
+        <footer class="fade-in">
+            <div class="section">
                 <h2>📞 지원 및 문의</h2>
                 <div class="features-grid">
                     <div class="feature-card">
@@ -642,24 +805,26 @@
                         </ul>
                     </div>
                 </div>
-                <div style="text-align: center; margin-top: 40px; font-size: 1.2rem; color: #5a67d8;">
-                    <p><strong>함께 성장하는 교회, 함께 만들어가는 공동체를 위한 첫걸음을 시작해보세요!</strong></p>
+                <div class="final-message">
+                    <strong>함께 성장하는 교회, 함께 만들어가는 공동체를 위한 첫걸음을 시작해보세요!</strong>
                 </div>
             </div>
         </footer>
     </div>
 
     <script>
-        // 스크롤 애니메이션
+        // 향상된 스크롤 애니메이션
         const observerOptions = {
             threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
+            rootMargin: '0px 0px -30px 0px'
         };
 
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
+            entries.forEach((entry, index) => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
+                    setTimeout(() => {
+                        entry.target.classList.add('visible');
+                    }, index * 100);
                 }
             });
         }, observerOptions);
@@ -668,7 +833,7 @@
             observer.observe(el);
         });
 
-        // 스무스 스크롤
+        // 스무스 스크롤 개선
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -682,37 +847,143 @@
             });
         });
 
-        // 배경 애니메이션
-        document.addEventListener('mousemove', (e) => {
+        // 터치 피드백 개선
+        document.querySelectorAll('.feature-card, .download-btn, .screenshot-card').forEach(element => {
+            element.addEventListener('touchstart', function() {
+                this.style.transform = 'scale(0.98)';
+            });
+            
+            element.addEventListener('touchend', function() {
+                this.style.transform = '';
+            });
+        });
+
+        // 성능 최적화된 마우스 트래킹
+        let isTrackingMouse = false;
+        
+        document.addEventListener('mousemove', throttle((e) => {
+            if (!isTrackingMouse && window.innerWidth > 768) {
+                createCursor(e);
+            }
+        }, 100));
+
+        function throttle(func, delay) {
+            let timeoutId;
+            let lastExecTime = 0;
+            return function (...args) {
+                const currentTime = Date.now();
+                
+                if (currentTime - lastExecTime > delay) {
+                    func.apply(this, args);
+                    lastExecTime = currentTime;
+                } else {
+                    clearTimeout(timeoutId);
+                    timeoutId = setTimeout(() => {
+                        func.apply(this, args);
+                        lastExecTime = Date.now();
+                    }, delay - (currentTime - lastExecTime));
+                }
+            };
+        }
+
+        function createCursor(e) {
             const cursor = document.createElement('div');
             cursor.style.cssText = `
                 position: fixed;
-                width: 10px;
-                height: 10px;
-                background: rgba(255,255,255,0.1);
+                width: 8px;
+                height: 8px;
+                background: rgba(255,255,255,0.6);
                 border-radius: 50%;
                 pointer-events: none;
-                left: ${e.clientX - 5}px;
-                top: ${e.clientY - 5}px;
-                animation: fade-out 1s ease-out forwards;
-                z-index: 1000;
+                left: ${e.clientX - 4}px;
+                top: ${e.clientY - 4}px;
+                animation: cursorFade 0.8s ease-out forwards;
+                z-index: 9999;
+                mix-blend-mode: difference;
             `;
             document.body.appendChild(cursor);
             
             setTimeout(() => {
                 cursor.remove();
-            }, 1000);
-        });
+            }, 800);
+        }
 
-        // CSS 애니메이션 추가
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes fade-out {
-                0% { opacity: 1; transform: scale(1); }
-                100% { opacity: 0; transform: scale(2); }
+        // 다이나믹 CSS 애니메이션 추가
+        const dynamicStyles = document.createElement('style');
+        dynamicStyles.textContent = `
+            @keyframes cursorFade {
+                0% { 
+                    opacity: 1; 
+                    transform: scale(1); 
+                }
+                100% { 
+                    opacity: 0; 
+                    transform: scale(2.5); 
+                }
+            }
+            
+            @keyframes slideInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(50px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+            
+            .feature-card:nth-child(even) {
+                animation-delay: 0.1s;
+            }
+            
+            .feature-card:nth-child(odd) {
+                animation-delay: 0.2s;
             }
         `;
-        document.head.appendChild(style);
+        document.head.appendChild(dynamicStyles);
+
+        // 프리로더 효과
+        window.addEventListener('load', () => {
+            document.body.style.overflow = 'visible';
+            
+            // 첫 번째 섹션 자동 표시
+            const firstSection = document.querySelector('.fade-in');
+            if (firstSection) {
+                setTimeout(() => {
+                    firstSection.classList.add('visible');
+                }, 300);
+            }
+        });
+
+        // 이미지 레이지 로딩
+        const imageObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    if (img.dataset.src) {
+                        img.src = img.dataset.src;
+                        img.removeAttribute('data-src');
+                        imageObserver.unobserve(img);
+                    }
+                }
+            });
+        });
+
+        document.querySelectorAll('img[data-src]').forEach(img => {
+            imageObserver.observe(img);
+        });
+
+        // 접근성 향상
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Tab') {
+                document.body.classList.add('keyboard-navigation');
+            }
+        });
+
+        document.addEventListener('click', () => {
+            document.body.classList.remove('keyboard-navigation');
+        });
     </script>
 </body>
 </html>
